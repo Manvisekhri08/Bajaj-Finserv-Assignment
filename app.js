@@ -2,14 +2,14 @@ const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
+require('dotenv/config')
 
 const app = express();
 const Patients = require("./models/patient")
 
 
 
-const connectionURL = "mongodb+srv://Manvi:sSwe8Gg5kZaLeyQW@cluster0.4r8kw.mongodb.net/Patients?retryWrites=true&w=majority"
+const connectionURL = process.env.DB_CONNECTION
 
 //Connecting to DataBase
 mongoose.connect(connectionURL,{ useUnifiedTopology: true, useNewUrlParser: true})
