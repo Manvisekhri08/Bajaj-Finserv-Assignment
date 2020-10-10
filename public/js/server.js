@@ -1,4 +1,4 @@
-const weatherForm = document.querySelector('form')
+const PatientForm = document.querySelector('form')
 const search = document.querySelector("input")
 const messageOne = document.querySelector("#message-1")
 const messageTwo = document.querySelector("#message-2")
@@ -18,7 +18,7 @@ const messageFifteen = document.querySelector("#message-15")
 const messageSixteen = document.querySelector("#message-16")
 
 
-weatherForm.addEventListener('submit', (e) => {
+PatientForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
     const Mobno = search.value
