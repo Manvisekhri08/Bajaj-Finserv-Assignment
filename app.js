@@ -45,9 +45,9 @@ app.get('', (req, res) => {
 //Fetching Patient Details
 app.get('/data', (req, res) => {
     const MobNo = req.query.Mobno
-    if (!req.query.Mobno) {
+    if (!MobNo) {
     return res.send({
-      error: 'You must provide a Mobile Number'
+      message: 'You must provide a Mobile Number'
     })
   }
     Patients.find({Mobno: MobNo}).then(data => {
