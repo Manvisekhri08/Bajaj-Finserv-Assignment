@@ -23,7 +23,7 @@ PatientForm.addEventListener('submit', (e) => {
 
     const Mobno = search.value
 
-    messageOne.textContent = "Loading..."
+    messageOne.textContent = "Data doesnot exist! Please check your Mobile Number Again"
     messageTwo.textContent = ""
 
 
