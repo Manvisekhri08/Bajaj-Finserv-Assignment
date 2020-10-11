@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const hbs = require("hbs")
 
+require('dotenv/config')
+
 const app = express();
 const Patients = require("./models/patient")
 
@@ -16,7 +18,7 @@ app.set("views", viewsPath);
 // Setup static directory to serve
 app.use(express.static(publicDirectory));
 
-const connectionURL = "mongodb+srv://Manvi:sSwe8Gg5kZaLeyQW@cluster0.4r8kw.mongodb.net/Patients?retryWrites=true&w=majority"
+const connectionURL = process.env.DB_CONNECTION
 
 //Connecting to DataBase
 mongoose.connect(connectionURL,{ useUnifiedTopology: true, useNewUrlParser: true})
@@ -51,7 +53,7 @@ app.get('/data', (req, res) => {
     })
   }
     Patients.find({Mobno: MobNo}).then(data => {
-        if (data) {
+        if (data && data.length > 0) {
             res.status(200).json(data);
         } else {
             res.status(404).json({ message: 'Data doesnot exist! Please check your Mobile Number Again' });
@@ -62,4 +64,5 @@ app.get('/data', (req, res) => {
       });
       });
     }) 
+
 
