@@ -1,22 +1,22 @@
-const path = require("path");
+// const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const hbs = require("hbs")
+// const hbs = require("hbs")
 
 require('dotenv/config')
 
 const app = express();
 const Patients = require("./models/patient")
 
-const publicDirectory = path.join(__dirname, "./public");
-const viewsPath = path.join(__dirname, "./templates/views");
+// const publicDirectory = path.join(__dirname, "./public");
+// const viewsPath = path.join(__dirname, "./templates/views");
 // Setup handlebars engine and view location
-app.set('view engine', 'hbs')
-app.set("views", viewsPath);
+// app.set('view engine', 'hbs')
+// app.set("views", viewsPath);
 
-// Setup static directory to serve
-app.use(express.static(publicDirectory));
+// // Setup static directory to serve
+// app.use(express.static(publicDirectory));
 
 const connectionURL = process.env.DB_CONNECTION
 
@@ -43,6 +43,9 @@ app.get('', (req, res) => {
     })
 })
 
+app.get('/',(req,res) => {
+    res.status(200).json({ message: 'Hi'});
+})
 
 //Fetching Patient Details
 app.get('/data', (req, res) => {
